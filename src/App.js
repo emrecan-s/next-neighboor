@@ -19,7 +19,7 @@ const [are_the_walls_thin,setAre_the_walls_thin] = useState()
 const [is_outside_quiet,setIs_outside_quiet] = useState()
 const [party,setParty] = useState()
 const [address,setAddress] = useState({"address_line1":"","address_line2":"","city":"","postal_code":"","country":"","property_number":""})
-const [date,setDate] = useState()
+const [date,setDate] = useState(Date.now())
 
 const handleSubmit = event => {
 
@@ -41,13 +41,27 @@ const formData = new FormData();
   formData.append('are_the_walls_thin', are_the_walls_thin);
   formData.append('is_outside_quiet', is_outside_quiet);
   formData.append('party', party);
-  formData.append('address', address);
+  formData.append('address', JSON.stringify(address));
   formData.append('date', date);
 
 //Form data returns empty 
-axios.post(`/add`, formData ).then(response => {
-  console.log(response)
+
+axios({
+    method: 'post',
+    url: '/add',
+    data: formData,
+    headers: {'Content-Type': 'multipart/form-data' }
     })
+    .then(function (response) {
+        //handle success
+        console.log(response);
+    })
+    .catch(function (response) {
+        //handle error
+        console.log(response);
+    })
+
+
 }
 return (
 <div>
