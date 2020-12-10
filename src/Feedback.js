@@ -31,7 +31,7 @@ const fuse = new Fuse(listing_url, {
 });
 
   
-const results = fuse.search('flory');
+const results = fuse.search('example');
 console.log(results)
 
 
