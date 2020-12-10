@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import logo from './logo.svg';
 import './App.scss';
 import axios from 'axios';
+import 'bulma/css/bulma.css'
+
 function App() {
 const [listing_url,setListingurl] = useState()
-const [property_type,setProperty_type] = useState()
+const [property_type,setProperty_type] = useState('house')
 const [nickname,setNickname] = useState()
 const [summary,setSummary] = useState()
 const [interaction,setInteraction] = useState()
-const [noise_level,setNoise_level] = useState()
+const [noise_level,setNoise_level] = useState(0)
 const [loud_tv_video,setLoud_tv_video] = useState()
 const [heavy_walkers,setHeavy_walkers] = useState()
 const [do_they_play_an_instrument,setDo_they_play_an_instrument] = useState()

@@ -98,9 +98,6 @@ app.get('/data', function(req, res) {
 
 })
 
-app.get('/ping', function(req, res) {
-	return res.send('pong');
-});
 
 
 

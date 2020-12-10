@@ -9,7 +9,7 @@ ReactDOM.render(
 <React.StrictMode>
 <Router>
 <Switch>
-<Route exact path="/feedback">
+<Route exact path="/listing">
 <Feedback/>
 </Route>
 <Route exact path="/">
