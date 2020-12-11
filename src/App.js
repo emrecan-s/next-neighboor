@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.scss';
 import axios from 'axios';
 import 'bulma/css/bulma.css'
-
+import Navbar from  "./Navbar"
 function App() {
 const [listing_url,setListingurl] = useState()
 const [property_type,setProperty_type] = useState('house')
@@ -67,8 +67,9 @@ axios({
 }
 return (
 <div>
+<Navbar/>
+<div className="container">
   <div className="fade"></div>
-  <section className="star-wars">
     <div className="crawl">
       <div className="title">
         <h1>Who is your next neighbours ?</h1>
@@ -77,9 +78,10 @@ return (
       <p>Do you want to know how is your next house, apartment will be ?</p>
       <p>Would you like to help others to avoid to rent your problematic previous house or flat ?</p>
       <br></br>
-      <button>I want to help</button><button>Find a quiet place for me</button>
+      <a className="button" href="#formSection">I want to help</a><a className="button" href="/listing">Find a quiet place for me</a>
     </div>
     <br></br>
+    <h2 id="formSection">Tell about others your previous flat/house</h2>
     <form onSubmit={handleSubmit}>
       <label>
         Property Type
@@ -317,7 +319,7 @@ return (
       </label>
       <button >Submit</button>
     </form>
-  </section>
+    </div>
 </div>
 );
 }
