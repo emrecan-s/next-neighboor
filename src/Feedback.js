@@ -52,7 +52,7 @@ propertyResults.map((item, index) =>
       <p className="card-header-title">
         {item.address.address_line1} - {item.address.address_line2}  - {item.address.property_number} - {item.address.city} - {item.address.postal_code} - {item.address.country}
         <br/>
-        Type: {item.property_type}   --
+        Type: {item.property_type}   &
         Overall noise level: {item.noise_level} / 10
       </p>
     </header>
@@ -76,7 +76,7 @@ propertyResults.map((item, index) =>
         <br/>
         <strong>Any loud hobbies ? :</strong> {item.do_they_have_loud_hobbies}
         <br/>
-        <strong>Are the walls thin? :</strong> {item.are_the_walls_thin}
+        <strong>Are the walls thin ? :</strong> {item.are_the_walls_thin}
         <br/>
         <strong>Is outside quiet ? :</strong> {item.is_outside_quiet}
         <br/>
@@ -100,14 +100,16 @@ propertyResults.map((item, index) =>
 return (
 <section>
   <Navbar/>
-    <div className="container is-max-desktop">
-      <div className="field">
+  <div className="m-3">
+    <div className="container is-max-desktop  ">
+      <div className="field ">
         <label className="label">Enter The Adress</label>
         <div className="control">
           <input className="input" type="text" value={query} onChange={onSearch} placeholder="Woodside Ave"/>
         </div>
       </div>
       {displayProperties}
+    </div>
     </div>
   </section>
   );

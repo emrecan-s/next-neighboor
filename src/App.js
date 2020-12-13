@@ -67,18 +67,19 @@ axios({
 
 
 }
+
 return (
 <div>
 <Navbar/>
-<div className="container">
-  <div className="fade"></div>
+<div className=" container ">
+<div className="margin">
     <div className="crawl is-size-3 has-text-white  has-text-weight-bold has-text-centered" style={{backgroundImage: `url(${mainBackground}`, backgroundSize: "cover", height:"700px"}}>
       <div className="title">
         <h1 className="crawl is-size-2 has-text-white has-text-weight-bold has-text-centered">Who is your next neighbours ?</h1>
       </div>
       <p>Are noisy neighbours ruining your life ?</p>
       <p>Do you want to know how is your next house, apartment will be ?</p>
-      <p>Would you like to help others to avoid to rent your problematic previous house or flat ?</p>
+      <p>Would you like to help others to avoid to rent your previous noisy house or flat ?</p>
       <br></br>
     </div>
     <br></br>
@@ -86,8 +87,8 @@ return (
    <a className="button" href="#formSection">I want to help</a><a className="button" href="/listing">Find a quiet place for me</a>
     <br></br>
     <br></br>
-    <div class="field">
-    <h2 id="formSection">Tell others about your previous flats/houses</h2>
+    <div className="field">
+    <h2 id="formSection" className="has-text-weight-bold">Tell others about your previous flats/houses</h2>
     <br></br>
     <br></br>
     <form onSubmit={handleSubmit}>
@@ -157,7 +158,7 @@ return (
       name="boolean_video"
       value="true"
       onChange={e => setLoud_tv_video(e.target.value)}/>
-      <label  className="radio" for="true">Yes</label>
+      <label  className="radio" htmlFor="true">Yes</label>
       <input 
       className="radio"
       type="radio"
@@ -165,7 +166,7 @@ return (
       name="boolean_video"
       value="false"
       onChange={e => setLoud_tv_video(e.target.value)}/>
-      <label  className="radio" for="false">No</label>
+      <label  className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
       <p className="radio">Any heavy walkers ?</p>
@@ -176,7 +177,7 @@ return (
       name="boolean_walkers"
       value="true"
       onChange={e => setHeavy_walkers(e.target.value)}/>
-      <label className="radio" for="true">Yes</label>
+      <label className="radio" htmlFor="true">Yes</label>
       <input
       className="radio"
       type="radio"
@@ -184,7 +185,7 @@ return (
       name="boolean_walkers"
       value="false"
       onChange={e => setHeavy_walkers(e.target.value)}/>
-      <label className="radio" for="false">No</label>
+      <label className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
        <p className="radio">Do they play an instrument ?</p>
@@ -195,7 +196,7 @@ return (
       name="boolean_instrument"
       value="true"
       onChange={e => setDo_they_play_an_instrument(e.target.value)}/>
-      <label className="radio" for="true">Yes</label>
+      <label className="radio" htmlFor="true">Yes</label>
       <input
       className="radio"
       type="radio"
@@ -203,7 +204,7 @@ return (
       name="boolean_instrument"
       value="false"
       onChange={e => setDo_they_play_an_instrument(e.target.value)}/>
-      <label className="radio" for="false">No</label>
+      <label className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
        <p className="radio">Do they sing loud ?</p>
@@ -214,7 +215,7 @@ return (
       name="boolean_sing"
       value="true"
       onChange={e => setDo_they_sing(e.target.value)}/>
-      <label className="radio" for="true">Yes</label>
+      <label className="radio" htmlFor="true">Yes</label>
       <input 
       className="radio" 
       type="radio"
@@ -222,10 +223,10 @@ return (
       name="boolean_sing"
       value="false"
       onChange={e => setDo_they_sing(e.target.value)}/>
-      <label className="radio" for="false">No</label>
+      <label className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
-       <p>Do they have loud pets ?</p>
+       <p className="radio"> Do they have loud pets ?</p>
       <input 
       className="radio"
       type="radio"
@@ -233,7 +234,7 @@ return (
       name="boolean_pets"
       value="true"
       onChange={e => setDo_they_have_loud_pets(e.target.value)}/>
-      <label className="radio" for="true">Yes</label>
+      <label className="radio" htmlFor="true">Yes</label>
       <input
       className="radio"
       type="radio"
@@ -241,7 +242,7 @@ return (
       name="boolean_pets"
       value="false"
       onChange={e => setDo_they_have_loud_pets(e.target.value)}/>
-      <label className="radio" for="false">No</label>
+      <label className="radio" className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
        <p className="radio"> Do they have loud hobbies ?</p>
@@ -252,7 +253,7 @@ return (
       name="boolean_hobbies"
       value="true"
       onChange={e => setDo_they_have_loud_hobbies(e.target.value)}/>
-      <label className="radio" for="true">Yes</label>
+      <label className="radio" htmlFor="true">Yes</label>
       <input 
       className="radio"
       type="radio"
@@ -260,10 +261,10 @@ return (
       name="boolean_hobbies"
       value="false"
       onChange={e => setDo_they_have_loud_hobbies(e.target.value)}/>
-      <label className="radio" for="false">No</label>
+      <label className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
-      <p className="radio">Are the walls thin ? ?</p>
+      <p className="radio">Are the walls thin ?</p>
       <input
       className="radio"
       type="radio"
@@ -271,13 +272,13 @@ return (
       name="boolean_thin"
       value="true"
       onChange={e => setAre_the_walls_thin(e.target.value)}/>
-      <label className="radio" for="true">Yes</label>
+      <label className="radio" htmlFor="true">Yes</label>
       <input className="radio" type="radio"
       id="false"
       name="boolean_thin"
       value="false"
       onChange={e => setAre_the_walls_thin(e.target.value)}/>
-      <label className="radio" for="false">No</label>
+      <label className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
       <p className="radio">Is outside quiet ?</p>
@@ -288,7 +289,7 @@ return (
       name="boolean_quiet"
       value="true"
       onChange={e => setIs_outside_quiet(e.target.value)}/>
-      <label className="radio" for="true">Yes</label>
+      <label className="radio" htmlFor="true">Yes</label>
       <input 
       className="radio"
       type="radio"
@@ -296,7 +297,7 @@ return (
       name="boolean_quiet"
       value="false"
       onChange={e => setIs_outside_quiet(e.target.value)}/>
-      <label className="radio" for="false">No</label>
+      <label className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
       <p className="radio">Do they party ?</p>
@@ -307,7 +308,7 @@ return (
       name="boolean_party"
       value="true"
       onChange={e => setParty(e.target.value)}/>
-      <label  className="radio" for="true">Yes</label>
+      <label  className="radio" htmlFor="true">Yes</label>
       <input  
       className="radio" 
       type="radio"
@@ -315,7 +316,7 @@ return (
       name="boolean_party"
       value="false"
       onChange={e => setParty(e.target.value)}/>
-      <label className="radio" for="false">No</label>
+      <label className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
       <label>
@@ -374,13 +375,15 @@ return (
       </label>
       <br></br>
       <br></br>
-      <button class="button" >Submit</button>
+      <button className="button" >Submit</button>
       <br></br>
       <br></br>
     </form>
     </div>
     </div>
+    </div>
 </div>
+
 );
 }
 export default App;
