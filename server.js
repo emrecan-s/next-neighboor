@@ -92,7 +92,6 @@ app.post("/add", function(req, res) {
 //get all collection data
 app.get('/data', function(req, res) {
 	collection.find({}).toArray(function(err, data) {
-		console.log(data)
 		res.send(data)
 	})
 
@@ -105,4 +104,7 @@ app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+app.get('/listing', function(req, res) {
+	res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 app.listen(process.env.PORT || 8080);
