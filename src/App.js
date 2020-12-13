@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from './logo.png';
+import mainBackground from './images/house.jpg'
 import './App.scss';
 import axios from 'axios';
 import 'bulma/css/bulma.css'
@@ -24,6 +25,7 @@ const [address,setAddress] = useState({"address_line1":"","address_line2":"","ci
 const [date,setDate] = useState(Date.now())
 
 const handleSubmit = event => {
+  alert("form submitted")
 
 event.preventDefault()
 
@@ -70,22 +72,30 @@ return (
 <Navbar/>
 <div className="container">
   <div className="fade"></div>
-    <div className="crawl">
+    <div className="crawl is-size-3 has-text-white  has-text-weight-bold has-text-centered" style={{backgroundImage: `url(${mainBackground}`, backgroundSize: "cover", height:"700px"}}>
       <div className="title">
-        <h1>Who is your next neighbours ?</h1>
+        <h1 className="crawl is-size-2 has-text-white has-text-weight-bold has-text-centered">Who is your next neighbours ?</h1>
       </div>
       <p>Are noisy neighbours ruining your life ?</p>
       <p>Do you want to know how is your next house, apartment will be ?</p>
       <p>Would you like to help others to avoid to rent your problematic previous house or flat ?</p>
       <br></br>
-      <a className="button" href="#formSection">I want to help</a><a className="button" href="/listing">Find a quiet place for me</a>
     </div>
     <br></br>
-    <h2 id="formSection">Tell about others your previous flat/house</h2>
+    
+   <a className="button" href="#formSection">I want to help</a><a className="button" href="/listing">Find a quiet place for me</a>
+    <br></br>
+    <br></br>
+    <div class="field">
+    <h2 id="formSection">Tell others about your previous flats/houses</h2>
+    <br></br>
+    <br></br>
     <form onSubmit={handleSubmit}>
-      <label>
-        Property Type
-        <select onChange={e => setProperty_type(e.target.value)}>
+      <label >
+        Select Property Type
+        <select 
+        className ="input "
+        onChange={e => setProperty_type(e.target.value)}>
           <option value="house">House</option>
           <option value="flat">Flat</option>
         </select>
@@ -95,6 +105,7 @@ return (
       <label>
         Nickname
         <input type="text"
+        className ="input "
         name ="nickname"
         type="text"
         value={nickname}
@@ -104,7 +115,8 @@ return (
       <br></br>
       <label>
         Summary
-        <input type="text"
+        <textarea
+        className ="textarea"
         name ="summary"
         type="text"
         value={summary}
@@ -113,8 +125,10 @@ return (
       <br></br>
       <br></br>
       <label>
-        Interaction
-        <input type="text"
+        Interaction with the neighbours
+        <input 
+        className ="input"
+        type="text"
         name ="interaction"
         type="text"
         value={interaction}
@@ -124,7 +138,8 @@ return (
       <br></br>
       <label>
         Overall Noise level
-        <input type="text"
+        <input
+        type="text"
         name ="interaction"
         type="range"
         min="0"
@@ -134,144 +149,179 @@ return (
       </label>
       <br></br>
       <br></br>
-      <p>Loud tv or video games ?</p>
-      <input type="radio"
+      <label className="radio">Loud tv or video games ?</label>
+      <input 
+      className="radio"
+      type="radio"
       id="video"
       name="boolean_video"
       value="true"
       onChange={e => setLoud_tv_video(e.target.value)}/>
-      <label for="true">Yes</label>
-      <input type="radio"
+      <label  className="radio" for="true">Yes</label>
+      <input 
+      className="radio"
+      type="radio"
       id="false"
       name="boolean_video"
       value="false"
       onChange={e => setLoud_tv_video(e.target.value)}/>
-      <label for="false">No</label>
+      <label  className="radio" for="false">No</label>
       <br></br>
       <br></br>
-      <p>Any heavy walkers ?</p>
-      <input type="radio"
+      <p className="radio">Any heavy walkers ?</p>
+      <input 
+      className="radio"
+      type="radio"
       id="true"
       name="boolean_walkers"
       value="true"
       onChange={e => setHeavy_walkers(e.target.value)}/>
-      <label for="true">Yes</label>
-      <input type="radio"
+      <label className="radio" for="true">Yes</label>
+      <input
+      className="radio"
+      type="radio"
       id="false"
       name="boolean_walkers"
       value="false"
       onChange={e => setHeavy_walkers(e.target.value)}/>
-      <label for="false">No</label>
+      <label className="radio" for="false">No</label>
       <br></br>
       <br></br>
-       <p>Do they play an instrument ?</p>
-      <input type="radio"
+       <p className="radio">Do they play an instrument ?</p>
+      <input
+      className="radio"
+      type="radio"
       id="true"
       name="boolean_instrument"
       value="true"
       onChange={e => setDo_they_play_an_instrument(e.target.value)}/>
-      <label for="true">Yes</label>
-      <input type="radio"
+      <label className="radio" for="true">Yes</label>
+      <input
+      className="radio"
+      type="radio"
       id="false"
       name="boolean_instrument"
       value="false"
       onChange={e => setDo_they_play_an_instrument(e.target.value)}/>
-      <label for="false">No</label>
+      <label className="radio" for="false">No</label>
       <br></br>
       <br></br>
-       <p>Do they sing ?</p>
-      <input type="radio"
+       <p className="radio">Do they sing loud ?</p>
+      <input 
+      className="radio"
+      type="radio"
       id="true"
       name="boolean_sing"
       value="true"
       onChange={e => setDo_they_sing(e.target.value)}/>
-      <label for="true">Yes</label>
-      <input type="radio"
+      <label className="radio" for="true">Yes</label>
+      <input 
+      className="radio" 
+      type="radio"
       id="false"
       name="boolean_sing"
       value="false"
       onChange={e => setDo_they_sing(e.target.value)}/>
-      <label for="false">No</label>
+      <label className="radio" for="false">No</label>
       <br></br>
       <br></br>
        <p>Do they have loud pets ?</p>
-      <input type="radio"
+      <input 
+      className="radio"
+      type="radio"
       id="true"
       name="boolean_pets"
       value="true"
       onChange={e => setDo_they_have_loud_pets(e.target.value)}/>
-      <label for="true">Yes</label>
-      <input type="radio"
+      <label className="radio" for="true">Yes</label>
+      <input
+      className="radio"
+      type="radio"
       id="false"
       name="boolean_pets"
       value="false"
       onChange={e => setDo_they_have_loud_pets(e.target.value)}/>
-      <label for="false">No</label>
+      <label className="radio" for="false">No</label>
       <br></br>
       <br></br>
-       <p>Do they have loud hobbies ?</p>
-      <input type="radio"
+       <p className="radio"> Do they have loud hobbies ?</p>
+      <input 
+      className="radio"
+      type="radio"
       id="true"
       name="boolean_hobbies"
       value="true"
       onChange={e => setDo_they_have_loud_hobbies(e.target.value)}/>
-      <label for="true">Yes</label>
-      <input type="radio"
+      <label className="radio" for="true">Yes</label>
+      <input 
+      className="radio"
+      type="radio"
       id="false"
       name="boolean_hobbies"
       value="false"
       onChange={e => setDo_they_have_loud_hobbies(e.target.value)}/>
-      <label for="false">No</label>
+      <label className="radio" for="false">No</label>
       <br></br>
       <br></br>
-      <p>Are the walls thin ? ?</p>
-      <input type="radio"
+      <p className="radio">Are the walls thin ? ?</p>
+      <input
+      className="radio"
+      type="radio"
       id="true"
       name="boolean_thin"
       value="true"
       onChange={e => setAre_the_walls_thin(e.target.value)}/>
-      <label for="true">Yes</label>
-      <input type="radio"
+      <label className="radio" for="true">Yes</label>
+      <input className="radio" type="radio"
       id="false"
       name="boolean_thin"
       value="false"
       onChange={e => setAre_the_walls_thin(e.target.value)}/>
-      <label for="false">No</label>
+      <label className="radio" for="false">No</label>
       <br></br>
       <br></br>
-      <p>Is outside quiet ?</p>
-      <input type="radio"
+      <p className="radio">Is outside quiet ?</p>
+      <input 
+      className="radio"
+      type="radio"
       id="true"
       name="boolean_quiet"
       value="true"
       onChange={e => setIs_outside_quiet(e.target.value)}/>
-      <label for="true">Yes</label>
-      <input type="radio"
+      <label className="radio" for="true">Yes</label>
+      <input 
+      className="radio"
+      type="radio"
       id="false"
       name="boolean_quiet"
       value="false"
       onChange={e => setIs_outside_quiet(e.target.value)}/>
-      <label for="false">No</label>
+      <label className="radio" for="false">No</label>
       <br></br>
       <br></br>
-      <p>Do they party ?</p>
-      <input type="radio"
+      <p className="radio">Do they party ?</p>
+      <input
+      className="radio"
+      type="radio"
       id="true"
       name="boolean_party"
       value="true"
       onChange={e => setParty(e.target.value)}/>
-      <label for="true">Yes</label>
-      <input type="radio"
+      <label  className="radio" for="true">Yes</label>
+      <input  
+      className="radio" 
+      type="radio"
       id="false"
       name="boolean_party"
       value="false"
       onChange={e => setParty(e.target.value)}/>
-      <label for="false">No</label>
+      <label className="radio" for="false">No</label>
       <br></br>
       <br></br>
       <label>
       Addres line 1
        <input 
+       className ="input"
         type="text"
         name = "setAddress_line1"
         value={address.address_line1}
@@ -280,6 +330,7 @@ return (
        <label>
        Addres line 2
        <input 
+        className ="input"
         type="text"
         name = "setAddress_line2"
         value={address.address_line2}
@@ -287,7 +338,8 @@ return (
       </label>
        <label>
        Property number
-       <input 
+       <input
+        className ="input" 
         type="text"
         name = "property number"
         value={address.property_number}
@@ -296,6 +348,7 @@ return (
        <label>
        City
        <input 
+       className ="input"
         type="text"
         name = "city"
         value={address.city}
@@ -304,6 +357,7 @@ return (
        <label>
        Post code
        <input 
+       className ="input"
         type="number"
         name = "post code"
         value={address.postal_code}
@@ -312,13 +366,19 @@ return (
       <label>
        Country
        <input 
+       className ="input"
         type="text"
         name = "country"
         value={address.country}
         onChange={e => setAddress(prev => ({...prev, country: e.target.value}))}/>
       </label>
-      <button >Submit</button>
+      <br></br>
+      <br></br>
+      <button class="button" >Submit</button>
+      <br></br>
+      <br></br>
     </form>
+    </div>
     </div>
 </div>
 );
