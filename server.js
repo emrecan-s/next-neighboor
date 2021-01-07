@@ -13,7 +13,7 @@ app.use(express.json());
 // for parsing multipart/form-data
 app.use(upload.array());
 
-console.log(process.env.DB_PASS)
+
 var mongoDB = `mongodb+srv://${process.env.DB_PASS}@cluster0.rgjkn.mongodb.net/neighbours?retryWrites=true&w=majority`;
 mongoose.connect(mongoDB, {
 	useNewUrlParser: true,

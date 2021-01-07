@@ -5,3 +5,9 @@
 h1 {
 	padding-top: 50px !important;
 }
+
+@media (min-width: 1024px) {
+.wider {
+	min-width: 30em !important;
+}
+}

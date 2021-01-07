@@ -5,6 +5,9 @@ import './App.scss';
 import axios from 'axios';
 import 'bulma/css/bulma.css'
 import Navbar from  "./Navbar"
+import Autocomplete from 'react-google-autocomplete';
+
+
 function App() {
 const [listing_url,setListingurl] = useState()
 const [property_type,setProperty_type] = useState('house')
@@ -21,9 +24,25 @@ const [do_they_have_loud_hobbies,setDo_they_have_loud_hobbies] = useState()
 const [are_the_walls_thin,setAre_the_walls_thin] = useState()
 const [is_outside_quiet,setIs_outside_quiet] = useState()
 const [party,setParty] = useState()
-const [address,setAddress] = useState({"address_line1":"","address_line2":"","city":"","postal_code":"","country":"","property_number":""})
+const [address,setAddress] = useState({"address_line1":"","city":"","postal_code":"","country":"","property_number":""})
 const [date,setDate] = useState(Date.now())
 
+
+
+function findPlace(place,value){
+  console.log(place)
+for(var i = 0; i < place.address_components.length ; i++){
+  if ((place.address_components[i].types[0] === 'postal_code') && value ==='postal_code'){
+    return place.address_components[i].long_name
+}
+   if ((place.address_components[i].types[0] === 'country') && value === 'country'){
+    return place.address_components[i].long_name
+  }
+   if ((place.address_components[i].types[0] === 'administrative_area_level_1') && value === 'city'){
+    return place.address_components[i].long_name
+  }
+}
+}
 const handleSubmit = event => {
   alert("form submitted")
 
@@ -49,7 +68,7 @@ const formData = new FormData();
   formData.append('date', date);
 
 //Form data returns empty 
-
+console.log(formData)
 axios({
     method: 'post',
     url: '/add',
@@ -73,9 +92,9 @@ return (
 <Navbar/>
 <div className=" container ">
 <div className="margin">
-    <div className="crawl is-size-3 has-text-white  has-text-weight-bold has-text-centered" style={{backgroundImage: `url(${mainBackground}`, backgroundSize: "cover", height:"700px"}}>
+    <div className=" is-size-3 has-text-white  has-text-weight-bold has-text-centered" style={{backgroundImage: `url(${mainBackground}`, backgroundSize: "cover", height:"700px"}}>
       <div className="title">
-        <h1 className="crawl is-size-2 has-text-white has-text-weight-bold has-text-centered">Who is your next neighbours ?</h1>
+        <h1 className=" is-size-2 has-text-white has-text-weight-bold has-text-centered">Who is your next neighbours ?</h1>
       </div>
       <p>Are noisy neighbours ruining your life ?</p>
       <p>Do you want to know how is your next house, apartment will be ?</p>
@@ -91,7 +110,57 @@ return (
     <h2 id="formSection" className="has-text-weight-bold">Tell others about your previous flats/houses</h2>
     <br></br>
     <br></br>
+    <div className="container">
+    <div className="columns">
+      <div className="column is-one-forth">
     <form onSubmit={handleSubmit}>
+     <Autocomplete
+      className ="input wider"
+      type="text"
+      apiKey={'AIzaSyDErmb8AJybt43aG5yfj0gHljCDtyRW-vM'}
+      onPlaceSelected={place => setAddress(prev => ({...prev, address_line1: place.formatted_address ,postal_code: findPlace(place,'postal_code'),country:findPlace(place,'country'),city:findPlace(place,'city')}))}
+      onChange= {console.log(address)}
+      types={['address']}
+    />
+       <label>
+       Property number
+       <input
+        className ="input" 
+        type="text"
+        name = "property number"
+        placeholder="Flat or house number"
+        value={address.property_number}
+        onChange={e => setAddress(prev => ({...prev, property_number: e.target.value}))}/>
+      </label>
+       <label>
+       City
+       <input 
+       className ="input"
+        type="text"
+        name = "city"
+        readOnly value={address.city}
+       />
+      </label>
+       <label>
+       Post code
+       <input 
+       className ="input"
+        type="number"
+        name = "post code"
+        readOnly value={ (typeof address.postal_code === "undefined") ? 0 : address.postal_code }
+     />
+      </label>
+      <label>
+       Country
+       <input 
+       className ="input"
+        type="text"
+        name = "country"
+        readOnly value={address.country}
+        />
+      </label>
+      <br></br>
+      <br></br>
       <label >
         Select Property Type
         <select 
@@ -117,7 +186,7 @@ return (
       <label>
         Summary
         <textarea
-        className ="textarea"
+        className ="textarea wider"
         name ="summary"
         type="text"
         value={summary}
@@ -125,10 +194,10 @@ return (
       </label>
       <br></br>
       <br></br>
-      <label>
+      <label className="wider">
         Interaction with the neighbours
         <input 
-        className ="input"
+        className ="input wider"
         type="text"
         name ="interaction"
         type="text"
@@ -138,7 +207,7 @@ return (
       <br></br>
       <br></br>
       <label>
-        Overall Noise level
+        Overall Noise level <br></br>
         <input
         type="text"
         name ="interaction"
@@ -319,62 +388,7 @@ return (
       <label className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
-      <label>
-      Addres line 1
-       <input 
-       className ="input"
-        type="text"
-        name = "setAddress_line1"
-        value={address.address_line1}
-        onChange={e => setAddress(prev => ({...prev, address_line1: e.target.value}))}/>
-      </label>
-       <label>
-       Addres line 2
-       <input 
-        className ="input"
-        type="text"
-        name = "setAddress_line2"
-        value={address.address_line2}
-        onChange={e => setAddress(prev => ({...prev, address_line2: e.target.value}))}/>
-      </label>
-       <label>
-       Property number
-       <input
-        className ="input" 
-        type="text"
-        name = "property number"
-        value={address.property_number}
-        onChange={e => setAddress(prev => ({...prev, property_number: e.target.value}))}/>
-      </label>
-       <label>
-       City
-       <input 
-       className ="input"
-        type="text"
-        name = "city"
-        value={address.city}
-        onChange={e => setAddress(prev => ({...prev, city: e.target.value}))}/>
-      </label>
-       <label>
-       Post code
-       <input 
-       className ="input"
-        type="number"
-        name = "post code"
-        value={address.postal_code}
-        onChange={e => setAddress(prev => ({...prev, postal_code: e.target.value}))}/>
-      </label>
-      <label>
-       Country
-       <input 
-       className ="input"
-        type="text"
-        name = "country"
-        value={address.country}
-        onChange={e => setAddress(prev => ({...prev, country: e.target.value}))}/>
-      </label>
-      <br></br>
-      <br></br>
+
       <button className="button" >Submit</button>
       <br></br>
       <br></br>
@@ -382,7 +396,10 @@ return (
     </div>
     </div>
     </div>
-</div>
+    </div>
+    </div>
+    </div>
+    </div>
 
 );
 }
