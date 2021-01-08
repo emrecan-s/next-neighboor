@@ -50,7 +50,7 @@ propertyResults.map((item, index) =>
   <div className="card">
     <header className="card-header">
       <p className="card-header-title">
-        {item.address.address_line1} - {item.address.address_line2}  - {item.address.property_number} - {item.address.city} - {item.address.postal_code} - {item.address.country}
+        {item.address.address_line1} - {item.address.property_number} - {item.address.city} - {item.address.postal_code} - {item.address.country}
         <br/>
         Type: {item.property_type}   &
         Overall noise level: {item.noise_level} / 10
