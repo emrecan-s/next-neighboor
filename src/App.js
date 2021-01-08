@@ -31,7 +31,8 @@ const [date,setDate] = useState(Date.now())
 
 function findPlace(place,value){
   console.log(place)
-for(var i = 0; i < place.address_components.length ; i++){
+for(var i = 0; i != place.address_components.length ; i++){
+  console.log(place.address_components[i].long_name)
   if ((place.address_components[i].types[0] === 'postal_code') && value ==='postal_code'){
     return place.address_components[i].long_name
 }
@@ -88,32 +89,33 @@ axios({
 }
 
 return (
-<div>
+<div className= "stage">
 <Navbar/>
 <div className=" container ">
 <div className="margin">
-    <div className=" is-size-3 has-text-white  has-text-weight-bold has-text-centered" style={{backgroundImage: `url(${mainBackground}`, backgroundSize: "cover", height:"700px"}}>
+    <div className=" is-size-3 has-text-white  has-text-weight-bold has-text-centered " >
       <div className="title">
-        <h1 className=" is-size-2 has-text-white has-text-weight-bold has-text-centered">Who is your next neighbours ?</h1>
+        <h1 className=" is-size-2 has-text-white has-text-weight-bold has-text-centered">Next-Neighbour Property Noise Review Site</h1>
       </div>
-      <p>Are noisy neighbours ruining your life ?</p>
       <p>Do you want to know how is your next house, apartment will be ?</p>
       <p>Would you like to help others to avoid to rent your previous noisy house or flat ?</p>
       <br></br>
     </div>
     <br></br>
-    
+    <div className ="buttons columns is-centered ">
    <a className="button" href="#formSection">I want to help</a><a className="button" href="/listing">Find a quiet place for me</a>
+   </div>
     <br></br>
     <br></br>
-    <div className="field">
-    <h2 id="formSection" className="has-text-weight-bold">Tell others about your previous flats/houses</h2>
+    <div className="field ">
+    <h2 id="formSection" className="has-text-weight-bold has-text-white is-size-3 ">Tell others about your previous flats / houses</h2>
     <br></br>
     <br></br>
     <div className="container">
     <div className="columns">
-      <div className="column is-one-forth">
+      <div className="column is-one-fifth">
     <form onSubmit={handleSubmit}>
+    <label>Adress</label>
      <Autocomplete
       className ="input wider"
       type="text"
@@ -122,6 +124,8 @@ return (
       onChange= {console.log(address)}
       types={['address']}
     />
+      <br></br>
+        <br></br>
        <label>
        Property number
        <input
@@ -132,30 +136,39 @@ return (
         value={address.property_number}
         onChange={e => setAddress(prev => ({...prev, property_number: e.target.value}))}/>
       </label>
+        <br></br>
+          <br></br>
        <label>
-       City
+       City / Region
        <input 
        className ="input"
         type="text"
         name = "city"
+        placeholder="this will be automatically filled"
         readOnly value={address.city}
        />
       </label>
+        <br></br>
+          <br></br>
        <label>
        Post code
        <input 
        className ="input"
-        type="number"
+        type="text"
         name = "post code"
+        placeholder="this will be automatically filled"
         readOnly value={ (typeof address.postal_code === "undefined") ? 0 : address.postal_code }
      />
       </label>
+        <br></br>
+          <br></br>
       <label>
        Country
        <input 
        className ="input"
         type="text"
         name = "country"
+        placeholder="this will be automatically filled"
         readOnly value={address.country}
         />
       </label>
@@ -164,7 +177,7 @@ return (
       <label >
         Select Property Type
         <select 
-        className ="input "
+        className ="input"
         onChange={e => setProperty_type(e.target.value)}>
           <option value="house">House</option>
           <option value="flat">Flat</option>
@@ -178,6 +191,7 @@ return (
         className ="input "
         name ="nickname"
         type="text"
+        placeholder="We appreciate anonymity"
         value={nickname}
         onChange={e => setNickname(e.target.value)}/>
       </label>
@@ -220,6 +234,7 @@ return (
       <br></br>
       <br></br>
       <label className="radio">Loud tv or video games ?</label>
+      <br></br>
       <input 
       className="radio"
       type="radio"
@@ -239,6 +254,7 @@ return (
       <br></br>
       <br></br>
       <p className="radio">Any heavy walkers ?</p>
+      <br></br>
       <input 
       className="radio"
       type="radio"
@@ -258,6 +274,7 @@ return (
       <br></br>
       <br></br>
        <p className="radio">Do they play an instrument ?</p>
+       <br></br>
       <input
       className="radio"
       type="radio"
@@ -277,6 +294,7 @@ return (
       <br></br>
       <br></br>
        <p className="radio">Do they sing loud ?</p>
+       <br></br>
       <input 
       className="radio"
       type="radio"
@@ -296,6 +314,7 @@ return (
       <br></br>
       <br></br>
        <p className="radio"> Do they have loud pets ?</p>
+       <br></br>
       <input 
       className="radio"
       type="radio"
@@ -315,6 +334,7 @@ return (
       <br></br>
       <br></br>
        <p className="radio"> Do they have loud hobbies ?</p>
+       <br></br>
       <input 
       className="radio"
       type="radio"
@@ -334,6 +354,7 @@ return (
       <br></br>
       <br></br>
       <p className="radio">Are the walls thin ?</p>
+      <br></br>
       <input
       className="radio"
       type="radio"
@@ -351,6 +372,7 @@ return (
       <br></br>
       <br></br>
       <p className="radio">Is outside quiet ?</p>
+      <br></br>
       <input 
       className="radio"
       type="radio"
@@ -370,6 +392,7 @@ return (
       <br></br>
       <br></br>
       <p className="radio">Do they party ?</p>
+      <br></br>
       <input
       className="radio"
       type="radio"
