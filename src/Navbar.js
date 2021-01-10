@@ -32,7 +32,7 @@ return(
         >
           <div className="navbar-start">
             <a className="navbar-item" href="/">Home</a>
-            <a className="navbar-item" href="/Listing">Listing</a>
+            <a className="navbar-item" href="/listing">Listing</a>
           </div>
         </div>
    </nav>
