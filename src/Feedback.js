@@ -50,9 +50,9 @@ propertyResults.map((item, index) =>
   <div className="card">
     <header className="card-header">
       <p className="card-header-title">
-        {item.address.address_line1} - {item.address.property_number} - {item.address.city} - {item.address.postal_code} - {item.address.country}
+        {item.address.address_line1} | Property Num: {item.address.property_number === '' ? "Not provided" : item.address.property_number}
         <br/>
-        Type: {item.property_type}   &
+        Type: {item.property_type}   |
         Overall noise level: {item.noise_level} / 10
       </p>
     </header>
@@ -60,33 +60,33 @@ propertyResults.map((item, index) =>
       <div className="content">
         <strong> Summary</strong>
         <br/>
-        {item.summary}
+        {item.summary === 'undefined' ? "Not provided ": item.summary }
         <br/>
-        <strong>Interaction with neighboors :</strong> {item.interaction }
+        <strong>Interaction with neighboors :</strong> {item.interaction === 'undefined' ? "Not provided ": item.interaction }
         <br/>
-        <strong>Loud tv or  video games ? :</strong> {item.loud_tv_video }
+        <strong>Loud TV/music or video games ? :</strong> {item.loud_tv_video === 'undefined' ? "Not provided": item.loud_tv_video}
         <br/>
-        <strong>Any heavy walkers ? :</strong> {item.heavy_walkers }
+        <strong>Any heavy walkers ? :</strong> {item.heavy_walkers  === 'undefined' ? "Not provided": item.heavy_walkers }
         <br/>
-        <strong>Any loud instrument ? :</strong> {item.do_they_play_an_instrument }
+        <strong>Any loud instrument ? :</strong> {item.do_they_play_an_instrument === 'undefined' ? "Not provided" :item.do_they_play_an_instrument}
         <br/>
-        <strong>Singing loud ? :</strong> {item.do_they_sing }
+        <strong>Singing loud ? :</strong> {item.do_they_sing === 'undefined' ? "Not provided" : item.do_they_sing }
         <br/>
-        <strong>Loud Pets ? :</strong> {item.do_they_have_loud_pets}
+        <strong>Loud Pets ? :</strong> {item.do_they_have_loud_pets === 'undefined' ? "Not provided" : item.do_they_have_loud_pets}
         <br/>
-        <strong>Any loud hobbies ? :</strong> {item.do_they_have_loud_hobbies}
+        <strong>Any loud hobbies ? :</strong> {item.do_they_have_loud_hobbies === 'undefined' ? "Not provided" : item.do_they_have_loud_hobbies}
         <br/>
-        <strong>Are the walls thin ? :</strong> {item.are_the_walls_thin}
+        <strong>Are the walls thin ? :</strong> {item.are_the_walls_thin === 'undefined' ? "Not provided" : item.are_the_walls_thin}
         <br/>
-        <strong>Is outside quiet ? :</strong> {item.is_outside_quiet}
+        <strong>Is outside quiet ? :</strong> {item.is_outside_quiet === 'undefined' ? "Not provided" : item.is_outside_quiet}
         <br/>
-        <strong>Do they party a lot ? :</strong> {item.party}
+        <strong>Do they party a lot ? :</strong> {item.party === 'undefined' ? "Not provided" : item.party }
         <br/>
         
       </div>
     </div>
     <footer className="card-footer">
-      Posted by: {item.nickname}  --
+      Posted by: {item.nickname === 'undefined' ? "Unkown Person" : item.nickname }  --
       Date: {item.date}
     </footer>
   </div><hr></hr>
