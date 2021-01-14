@@ -1,3 +1,3 @@
 Open source flat/house noise directory which people can leave an anonymous review about their previous flats/houses. 
 Feel free to contribute.
-Here is the working demo https://github.com/emrecan-s/next-neighboor
+Here is the working demo https://noisy-neighbours.herokuapp.com/
