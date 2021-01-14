@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/App.scss"],"names":[],"mappings":"AAAA,QACC,qBAAsB,CACtB,GAGA,0BAA4B","file":"main.c1add140.chunk.css","sourcesContent":[".margin{\n\tmargin:10px !important;\n}\n\nh1 {\n\tpadding-top: 50px !important;\n}\n"]}
