@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 var multer = require('multer');
 var upload = multer();
 app.use(express.json());
+const axios = require('axios');
 
 // for parsing multipart/form-data
 app.use(upload.array());
@@ -52,9 +53,20 @@ var DataSchema = mongoose.Schema({
 var Datamap = mongoose.model('Datamap', DataSchema, 'neighbours_app');
 
 //add data
-app.post("/add", function(req, res) {
+app.post("/add", async function(req, res) {
 
-//Refactoring the form data
+
+
+
+const human = validateHuman(req.body.token)
+
+if (!human){
+	res.status(400)
+	res.json({erros:['You are a bot']})
+	return;
+}
+
+	//Refactoring the form data
 	const finalData = {
 
 		listing_url: `/listing/${JSON.parse(req.body.address).address_line1}`,
@@ -74,18 +86,29 @@ app.post("/add", function(req, res) {
 		party: req.body.party,
 		address: JSON.parse(req.body.address),
 		date: req.body.date
+		
 
 	}
 
-
-
 	var doc = new Datamap(finalData);
 
-	// save one model to database
+		// save one model to database
 	doc.save(function(err, book) {
 		if (err) return console.error(err);
-		res.send("done")
+		res.status(200)
+		res.json({message:['success']})
 	});
+
+
+
+
+async function validateHuman(token){
+	const secret = process.env.REACT_APP_CAPTCHA_SERVER
+	const response = await  axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`)
+	const data= await response.json();
+	return data.success
+
+}
 
 });
 
@@ -100,6 +123,8 @@ app.get('/data', function(req, res) {
 	res.send(error)
 }
 })
+
+
 
 
 

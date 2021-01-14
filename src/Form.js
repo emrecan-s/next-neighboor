@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import logo from './logo.png';
 import './App.scss';
 import axios from 'axios';
 import Autocomplete from 'react-google-autocomplete';
-
+import ReCAPTCHA from "react-google-recaptcha"
 
 function Form() {
 const [listing_url,setListingurl] = useState()
@@ -26,10 +26,8 @@ const [date,setDate] = useState(Date.now())
 
 
 
-
-
 function findPlace(place,value){
-  console.log(place)
+
 for(var i = 0; i != place.address_components.length ; i++){
   console.log(place.address_components[i].long_name)
   if ((place.address_components[i].types[0] === 'postal_code') && value ==='postal_code'){
@@ -44,13 +42,13 @@ for(var i = 0; i != place.address_components.length ; i++){
 }
 }
 
+const reRef = useRef();
 
 
-
-const handleSubmit = event => {
-  alert("form submitted")
-
+const handleSubmit = async event => {
 event.preventDefault()
+const token = await reRef.current.executeAsync();
+reRef.current.reset();
 
 const formData = new FormData();
   formData.append('listing_url', listing_url);
@@ -70,7 +68,9 @@ const formData = new FormData();
   formData.append('party', party);
   formData.append('address', JSON.stringify(address));
   formData.append('date', date);
-
+  formData.append('token',token)
+  
+console.log('before axios')
 //Form data returns empty 
 console.log(formData)
 axios({
@@ -91,19 +91,19 @@ axios({
 
 }
 
-window.handleSubmit = handleSubmit;
+
+
 
 return (
  <div className="column is-one-fifth">
-
-    <form  id="demo-form" onSubmit={handleSubmit}>
+<ReCAPTCHA sitekey={process.env.REACT_APP_CAPTCHA_SITE} size="invisible" ref={reRef}/>
+    <form onSubmit={handleSubmit}>
     <label>Adress</label>
      <Autocomplete
       className ="input wider"
       type="text"
-      apiKey={'AIzaSyDErmb8AJybt43aG5yfj0gHljCDtyRW-vM'}
+      apiKey={process.env.REACT_APP_API}
       onPlaceSelected={place => setAddress(prev => ({...prev, address_line1: place.formatted_address ,postal_code: findPlace(place,'postal_code'),country:findPlace(place,'country'),city:findPlace(place,'city')}))}
-      onChange= {console.log(address)}
       types={['address']}
     />
       <br></br>
@@ -393,10 +393,7 @@ return (
       <label className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
-        <button className="g-recaptcha button" 
-        data-sitekey="6LcMryYaAAAAAP5GfsGCOOV-7_URHEoLtssZBJwA" 
-        data-callback='handleSubmit'
-        data-action='submit'>Submit</button>
+        <button className="button" >Submit</button>
       <br></br>
       <br></br>
     </form>

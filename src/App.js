@@ -3,29 +3,18 @@ import logo from './logo.png';
 import './App.scss';
 import 'bulma/css/bulma.css';
 import Navbar from  './Navbar';
-import loadCaptcha from './recap';
 import Form from './Form';
+require('dotenv').config()
 
 
 function App() {
 
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    loadCaptcha(() => {
-      setLoaded(true);
-    });
-  });
-
-
-function onSubmit(token) {
-     document.getElementById("demo-form").submit();
-   }
 
 return (
 
 <div>
 <Navbar/>
+
 <div className="stage">
     <div className="has-text-white  has-text-weight-bold has-text-centered  " >
 
@@ -48,7 +37,7 @@ return (
     <h2 id="formSection" className="has-text-weight-bold  is-size-3 ">Tell others about your previous flats / houses</h2>
     <br></br>
     <br></br>
-    {loaded ? <Form/> : ''}
+   <Form/> 
     </div>
     </div>
     </div>
