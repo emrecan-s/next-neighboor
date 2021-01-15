@@ -3,6 +3,7 @@ import 'bulma/css/bulma.css'
 import Fuse from 'fuse.js';
 import axios from 'axios';
 import Navbar from  "./Navbar"
+
 function Feedback() {
 
 const [listing_url,setListingurl] = useState({})
