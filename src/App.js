@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import logo from './logo.png';
 import './App.scss';
 import 'bulma/css/bulma.css';
@@ -12,6 +11,7 @@ const title= 'Next-Neighbour Open Source Propery Noise Review Site'
 const description= 'No more noise complaint! Get to know your neighbors before moving to your next place. Help others to avoid noisy flats/houses'
 
 function App() {
+  console.log('mainApp')
 return (
 <div>
   <Helmet>

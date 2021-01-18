@@ -1,5 +1,4 @@
-import React, { useEffect, useState,useRef } from "react";
-import logo from './logo.png';
+import React, {useState,useRef } from "react";
 import './App.scss';
 import axios from 'axios';
 import Autocomplete from 'react-google-autocomplete';
@@ -28,8 +27,8 @@ const [date,setDate] = useState(Date.now())
 
 function findPlace(place,value){
 
-for(var i = 0; i != place.address_components.length ; i++){
-  console.log(place.address_components[i].long_name)
+for(var i = 0; i !== place.address_components.length ; i++){
+
   if ((place.address_components[i].types[0] === 'postal_code') && value ==='postal_code'){
     return place.address_components[i].long_name
 }
@@ -70,9 +69,8 @@ const formData = new FormData();
   formData.append('date', date);
   formData.append('token',token)
   
-console.log('before axios')
+
 //Form data returns empty 
-console.log(formData)
 axios({
     method: 'post',
     url: '/add',
@@ -81,8 +79,7 @@ axios({
     })
     .then(function (response) {
         //handle success
-        console.log(response);
-    })
+        console.log(response)})
     .catch(function (response) {
         //handle error
         console.log(response);
@@ -90,7 +87,6 @@ axios({
 
 
 }
-
 
 
 
@@ -169,7 +165,7 @@ return (
       <br></br>
       <label>
         Nickname
-        <input type="text"
+        <input
         className ="input "
         name ="nickname"
         type="text"
@@ -194,7 +190,6 @@ return (
         Interaction with the neighbours
         <input 
         className ="input wider"
-        type="text"
         name ="interaction"
         type="text"
         value={interaction}
@@ -205,8 +200,7 @@ return (
       <label>
         Overall Noise level <br></br>
         <input
-        type="text"
-        name ="interaction"
+        name ="Overall Noise"
         type="range"
         min="0"
         max="10"
@@ -228,7 +222,7 @@ return (
       <input 
       className="radio"
       type="radio"
-      id="false"
+      
       name="boolean_video"
       value="false"
       onChange={e => setLoud_tv_video(e.target.value)}/>
@@ -240,7 +234,7 @@ return (
       <input 
       className="radio"
       type="radio"
-      id="true"
+      
       name="boolean_walkers"
       value="true"
       onChange={e => setHeavy_walkers(e.target.value)}/>
@@ -248,7 +242,7 @@ return (
       <input
       className="radio"
       type="radio"
-      id="false"
+      
       name="boolean_walkers"
       value="false"
       onChange={e => setHeavy_walkers(e.target.value)}/>
@@ -260,7 +254,7 @@ return (
       <input
       className="radio"
       type="radio"
-      id="true"
+      
       name="boolean_instrument"
       value="true"
       onChange={e => setDo_they_play_an_instrument(e.target.value)}/>
@@ -268,7 +262,7 @@ return (
       <input
       className="radio"
       type="radio"
-      id="false"
+      
       name="boolean_instrument"
       value="false"
       onChange={e => setDo_they_play_an_instrument(e.target.value)}/>
@@ -280,7 +274,7 @@ return (
       <input 
       className="radio"
       type="radio"
-      id="true"
+      
       name="boolean_sing"
       value="true"
       onChange={e => setDo_they_sing(e.target.value)}/>
@@ -288,7 +282,7 @@ return (
       <input 
       className="radio" 
       type="radio"
-      id="false"
+      
       name="boolean_sing"
       value="false"
       onChange={e => setDo_they_sing(e.target.value)}/>
@@ -299,8 +293,7 @@ return (
        <br></br>
       <input 
       className="radio"
-      type="radio"
-      id="true"
+      type="radio"  
       name="boolean_pets"
       value="true"
       onChange={e => setDo_they_have_loud_pets(e.target.value)}/>
@@ -308,11 +301,10 @@ return (
       <input
       className="radio"
       type="radio"
-      id="false"
       name="boolean_pets"
       value="false"
       onChange={e => setDo_they_have_loud_pets(e.target.value)}/>
-      <label className="radio" className="radio" htmlFor="false">No</label>
+      <label className="radio" htmlFor="false">No</label>
       <br></br>
       <br></br>
        <p className="radio"> Do they have loud hobbies ?</p>
@@ -320,7 +312,7 @@ return (
       <input 
       className="radio"
       type="radio"
-      id="true"
+      
       name="boolean_hobbies"
       value="true"
       onChange={e => setDo_they_have_loud_hobbies(e.target.value)}/>
@@ -328,7 +320,7 @@ return (
       <input 
       className="radio"
       type="radio"
-      id="false"
+      
       name="boolean_hobbies"
       value="false"
       onChange={e => setDo_they_have_loud_hobbies(e.target.value)}/>
@@ -340,13 +332,13 @@ return (
       <input
       className="radio"
       type="radio"
-      id="true"
+      
       name="boolean_thin"
       value="true"
       onChange={e => setAre_the_walls_thin(e.target.value)}/>
       <label className="radio" htmlFor="true">Yes</label>
       <input className="radio" type="radio"
-      id="false"
+      
       name="boolean_thin"
       value="false"
       onChange={e => setAre_the_walls_thin(e.target.value)}/>
@@ -358,7 +350,7 @@ return (
       <input 
       className="radio"
       type="radio"
-      id="true"
+      
       name="boolean_quiet"
       value="true"
       onChange={e => setIs_outside_quiet(e.target.value)}/>
@@ -366,7 +358,7 @@ return (
       <input 
       className="radio"
       type="radio"
-      id="false"
+      
       name="boolean_quiet"
       value="false"
       onChange={e => setIs_outside_quiet(e.target.value)}/>
@@ -378,7 +370,7 @@ return (
       <input
       className="radio"
       type="radio"
-      id="true"
+      
       name="boolean_party"
       value="true"
       onChange={e => setParty(e.target.value)}/>
@@ -386,7 +378,7 @@ return (
       <input  
       className="radio" 
       type="radio"
-      id="false"
+      
       name="boolean_party"
       value="false"
       onChange={e => setParty(e.target.value)}/>
