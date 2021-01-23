@@ -22,7 +22,9 @@ function StateList(props) {
     const fetchData = async () => {
       const query = `/${state}${city ? `/${city}` : ""}`;
 
-      await axios.get(query).then((response) => {
+      await axios.get("/get-places/state/full",{params: {
+        validateQuery: query
+      }}).then((response) => {
         setUsStates(response.data);
         setLoading(false);
         setCleanUrl(query.toLowerCase());

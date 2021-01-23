@@ -124,23 +124,38 @@ app.get("/us-states", function (req, res) {
   }
 });
 
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+app.get("/listing", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+app.get("/:state/:city?", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+
 // /states?state="Texas"
 //get all state names
-app.get("/:state/:city?", function (req, res) {
+app.get("/get-places/state/full", function (req, res) {
 
   const clean = (s) => {
 
     if (typeof s !== 'string') return ''
     const cleaned= s.replace(/-/g, " ")
-   return cleaned.replace(/\b\w/g, l => l.toUpperCase())
+  const revClean =  cleaned.replace(/\b\w/g, l => l.toUpperCase())
+ return  revClean.split("/")
   }
 
+  finalPath = clean(req.query.validateQuery)
+const state=finalPath[1]
+const city =finalPath[2]
 
-  const { state, city } = req.params;
-  console.log("state", state);
   if (!state) throw Error("No state");
-  let query = { "State full": clean(state) };
-  if (city) query["City"] = clean(city);
+  let query = { "State full": state};
+  if (city) query["City"] = city;
 
   console.log(query)
 
@@ -157,11 +172,5 @@ app.get("/:state/:city?", function (req, res) {
   }
 });
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
 
-app.get("/listing", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
 app.listen(process.env.PORT || 8080);
