@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import 'bulma/css/bulma.css'
 import Fuse from 'fuse.js';
 import axios from 'axios';
-import Navbar from  "./Navbar"
+import Helmet from "react-helmet";
 
-function Feedback() {
+function Feedback(props) {
 
 const [listing_url,setListingurl] = useState({})
 
 const [id,setId]=useState()
 
-const [query, setQuery] = useState('');
+const [query, setQuery] = useState(props.state||"");
 
 useEffect(() => {
 
@@ -47,7 +47,7 @@ const propertyResults =  query ? results.map(listing_url => listing_url.item) : 
 
 const displayProperties =  propertyResults.length>0 ?
 propertyResults.map((item, index) =>
-<section>
+<section key ={index}>
   <div className="card">
     <header className="card-header">
       <p className="card-header-title">
@@ -95,15 +95,36 @@ propertyResults.map((item, index) =>
 )
 :(
 <div>
-  <p>Loading</p>
+  <p>Sorry there is no result for this adress. If you want to help others you can leave a review <a href="./#formSection">here.</a> </p>
 </div>
 )
+const title="Open Source Propery Noise Listing & Directory site"
+const description = "Search apartment and houses noise reviews. Avoid to move to a noisy house or apartment"
+
+
+const metaData = window.location.href.includes("listing") ?  <Helmet>
+<html lang="en" />
+<meta charSet="utf-8" />
+<title>{title}</title>
+<meta name="description" content=" "/>
+<link rel="canonical" href="/listing" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@nextNeighbour" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="description" content={description} />
+<meta property="og:title" content={title} />
+<meta property="og:url" content="/listing" />
+<meta property="og:description" content={description} />
+</Helmet> : ""
+
+
 return (
 <section>
-  <Navbar/>
   <div className="m-3">
     <div className="container is-max-desktop  ">
       <div className="field ">
+      {metaData}
         <label className="label">Enter The Adress</label>
         <div className="control">
           <input className="input" type="text" value={query} onChange={onSearch} placeholder="Woodside Ave"/>

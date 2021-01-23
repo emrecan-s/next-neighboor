@@ -48,3 +48,12 @@ body {
 .navbar-item img {
   max-height: 4rem !important;
 }
+
+#wrapper {
+  min-height: 60vh;	
+  background-image: url('./images/404.jpeg');
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:center;
+
+}

@@ -1,17 +1,13 @@
 import logo from './logo.png';
-import './App.scss';
-import 'bulma/css/bulma.css';
-import Navbar from  './Navbar';
 import Form from './Form';
-import Footer from './footer'
 import Helmet from 'react-helmet'
+
 
 require('dotenv').config()
 const title= 'Next-Neighbour Open Source Propery Noise Review Site'
 const description= 'No more noise complaint! Get to know your neighbors before moving to your next place. Help others to avoid noisy flats/houses'
 
 function App() {
-  console.log('mainApp')
 return (
 <div>
   <Helmet>
@@ -19,17 +15,18 @@ return (
   <meta charSet="utf-8" />
   <title>{title}</title>
   <meta name="description" content={description}/>
-  <link rel="canonical" href="/" />
+  <link rel="canonical" href="https://nextneighbour.com" />
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:site" content="@nextNeighbour"/>
   <meta name="twitter:title" content={title}/>
   <meta name="twitter:description" content={description}/>
   <meta name="description" content={description}/>
   <meta property="og:title" content={title}/>
+  <meta property="og:url" content="https://nextneighbour.com"/>
   <meta property="og:description" content={description}/>
 
   </Helmet>
-  <Navbar/>
+  
     <div className="stage">
       <div className="has-text-white  has-text-weight-bold has-text-centered" >
         <h1 className="title is-spaced is-size-1-mobile has-text-weight-bold">Next-Neighbour <br></br>Property Noise Review Site</h1>
@@ -55,7 +52,6 @@ return (
           </div>
         </div>
       </div>
-      <Footer/>
       </div>
       );
       }
