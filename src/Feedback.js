@@ -95,7 +95,7 @@ propertyResults.map((item, index) =>
 )
 :(
 <div>
-  <p>Sorry there is no result for this adress. If you want to help others you can leave a review <a href="./#formSection">here.</a> </p>
+  <p>Sorry there is no result for this adress. If you want to help others you can leave a review <a href="https://nextneighbour.com#formSection">here.</a> </p>
 </div>
 )
 const title="Open Source Propery Noise Listing & Directory site"
