@@ -141,33 +141,28 @@ app.get("/:state/:city?", function (req, res) {
 });
 
 
-// /states?state="Texas"
+
 //get all state names
 app.get("/get-places/state/full", function (req, res) {
-
   const clean = (s) => {
+    if (typeof s !== "string") return "";
+    const cleaned = s.replace(/-/g, " ");
+    const revClean = cleaned.replace(/\b\w/g, (l) => l.toUpperCase());
+    return revClean.split("/");
+  };
 
-    if (typeof s !== 'string') return ''
-    const cleaned= s.replace(/-/g, " ")
-  const revClean =  cleaned.replace(/\b\w/g, l => l.toUpperCase())
- return  revClean.split("/")
-  }
-
-  finalPath = clean(req.query.validateQuery)
-const state=finalPath[1]
-const city =finalPath[2]
+  finalPath = clean(req.query.validateQuery);
+  const state = finalPath[1];
+  const city = finalPath[2];
 
   if (!state) throw Error("No state");
-  let query = { "State full": state};
+  let query = { "State full": state };
   if (city) query["City"] = city;
 
-  console.log(query)
-
-
+  console.log(query);
 
   try {
-    let states = collectionR.find(query).toArray(function (error, results) {
-      
+    let states = collectionR.find(query).toArray((error, results) => {
       res.send(results);
     });
   } catch {
@@ -175,6 +170,5 @@ const city =finalPath[2]
     res.send(error);
   }
 });
-
 
 app.listen(process.env.PORT || 8080);

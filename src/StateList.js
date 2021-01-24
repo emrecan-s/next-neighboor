@@ -68,8 +68,6 @@ function StateList(props) {
         </Helmet>
         <h1>
           Best Place to find quiet places in {cleanState} {cleanCity}
-          
-    
         </h1>
         <p>&nbsp;</p>
         <p>

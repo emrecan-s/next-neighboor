@@ -6,7 +6,7 @@ function Navbar() {
  const [isActive, setisActive] = React.useState(false);
 
  const ga4react = new GA4React(
-  'G-G-FT85PNQ0Y5',
+  'G-FT85PNQ0Y5',
   { /* ga custom config, optional */ },
   [ /* additional code, optional */ ],
   5000 /* timeout, optional, defaults is 5000 */

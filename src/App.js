@@ -37,7 +37,7 @@ return (
       </div>
       <br></br>
       <div className ="buttons columns is-centered ">
-        <a className="button" href="#formSection">I want to help</a><a className="button" href="/listing">Find a quiet place for me</a>
+        <a className="button" href="#formSection">Leave a review</a><a className="button" href="/listing">Find a quiet place for me</a>
       </div>
     </div>
     <br></br>

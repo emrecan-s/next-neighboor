@@ -106,7 +106,7 @@ const metaData = window.location.href.includes("listing") ?  <Helmet>
 <html lang="en" />
 <meta charSet="utf-8" />
 <title>{title}</title>
-<meta name="description" content=" "/>
+<meta name="description" content={description}/>
 <link rel="canonical" href="https://nextneighbour.com/listing" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@nextNeighbour" />
