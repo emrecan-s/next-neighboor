@@ -128,6 +128,10 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
+app.get("/sitemap.xml", function (req, res) {
+  res.sendFile(path.join(__dirname, "public", "sitemap.xml"));
+});
+
 app.get("/listing", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });

@@ -1,3 +1,8 @@
-# Let the crawl begin	
-User-agent: *
-Disallow:
+# If you would like to contribute to the site here is the GitHub repo https://github.com/emrecan-s/next-neighboor
+
+# Let the crawl begin (͡° ͜ʖ ͡°)
+
+User-Agent: *
+Allow: /
+
+Sitemap: https://nextneighbour.com/sitemap.xml
