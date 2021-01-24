@@ -107,14 +107,14 @@ const metaData = window.location.href.includes("listing") ?  <Helmet>
 <meta charSet="utf-8" />
 <title>{title}</title>
 <meta name="description" content=" "/>
-<link rel="canonical" href="/listing" />
+<link rel="canonical" href="https://nextneighbour.com/listing" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@nextNeighbour" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="description" content={description} />
 <meta property="og:title" content={title} />
-<meta property="og:url" content="/listing" />
+<meta property="og:url" content="https://nextneighbour.com/listing" />
 <meta property="og:description" content={description} />
 </Helmet> : ""
 

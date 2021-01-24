@@ -42,7 +42,7 @@ function StateList(props) {
   if (!loading && !usStates.length) return <Redirect push to="/404" />;
 
   const cleanState=state.charAt(0).toUpperCase() + state.slice(1).replace(/-/g, " ")
-  const cleanCity= city ? `${city.charAt(0).toUpperCase() + city.slice(1)}` : ""
+  const cleanCity= city ? `${city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, " ")}` : ""
 
   const title = `Quiet Houses & Apartments in ${cleanState} ${cleanCity}`;
   const description = `No more noise complaint! Get to know your future neighbors in ${cleanState} ${cleanCity}. Leave a anonymous review to help others.`;
