@@ -125,19 +125,19 @@ app.get("/us-states", function (req, res) {
 });
 
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "/build", "index.html"));
 });
 
 app.get("/sitemap.xml", function (req, res) {
-  res.sendFile(path.join(__dirname, "public", "sitemap.xml"));
+  res.sendFile(path.join(__dirname, "/public", "sitemap.xml"));
 });
 
 app.get("/listing", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "/build", "index.html"));
 });
 
 app.get("/:state/:city?", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "/build", "index.html"));
 });
 
 
